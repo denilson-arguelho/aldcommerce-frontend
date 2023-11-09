@@ -4,30 +4,8 @@ import "./style.css";
 import SearchBar from "../../../components/SearchBar";
 import CatalogCard from "../../../components/CatalogCard";
 import CatalogNextPage from "../../../components/ButtonNextPage";
-import { ProductDTO } from "../../../models/product";
-
-const product: ProductDTO = {
-  id: 2,
-  name: "Smart TV",
-  description: "Essa TV é muito Bonita",
-  imgUrl:
-    "https://github.com/devsuperior/dscatalog-resources/blob/master/backend/img/2-big.jpg?raw=true",
-  price: 2500.0,
-  categories: [
-    {
-      id: 2,
-      name: "Eletrônicos",
-    },
-    {
-      id: 3,
-      name: "Computadores",
-    },
-    {
-      id: 4,
-      name: "Importados",
-    },
-  ],
-};
+/* Importando todas as funçoes do product-services */
+import * as productService from "../../../services/product-services";
 
 const Catalog = () => {
   return (
@@ -35,18 +13,9 @@ const Catalog = () => {
       <section id="catalog-section" className="dsc-container">
         <SearchBar />
         <div className="dsc-catalog-cards dsc-mb20 dsc-mt20">
-          <CatalogCard product={product} />
-          <CatalogCard product={product} />
-          <CatalogCard product={product} />
-          <CatalogCard product={product} />
-          <CatalogCard product={product} />
-          <CatalogCard product={product} />
-          <CatalogCard product={product} />
-          <CatalogCard product={product} />
-          <CatalogCard product={product} />
-          <CatalogCard product={product} />
-          <CatalogCard product={product} />
-          <CatalogCard product={product} />
+          {productService.findAll().map((product) => (
+            <CatalogCard key={product.id} product={product} />
+          ))}
         </div>
         <CatalogNextPage />
       </section>
