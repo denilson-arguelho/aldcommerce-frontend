@@ -6,6 +6,7 @@ import ProductDetailsCard from "../../../components/ProductDetailsCard";
 
 import * as productServices from "../../../services/product-services";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 /* const product: ProductDTO = {
   id: 2,
@@ -40,7 +41,7 @@ const ProductDetails = () => {
         {product && <ProductDetailsCard product={product} />}
         <div className="dsc-btn-page-container">
           <ButtonPrimary text="Comprar" />
-          <ButtonSecondary text="Inicio" />
+          <Link to={`/`}><ButtonSecondary text="Inicio" /></Link>
         </div>
       </section>
     </main>
