@@ -1,6 +1,6 @@
 /* Components */
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import HomeClient from "./routes/HomeClient";
 import Catalog from "./routes/HomeClient/Catalog";
@@ -21,7 +21,7 @@ function App() {
             <Route path="*" element={<NotFound/>}/>
             </Route>
           </Route>
-          <Route path="*" element={<NotFound/>}/>
+          <Route path="*" element={<Navigate to="/"/>}/>
         </Routes>
       </BrowserRouter>
     </>
