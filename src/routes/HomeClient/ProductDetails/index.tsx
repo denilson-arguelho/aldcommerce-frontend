@@ -3,26 +3,37 @@ import "./style.css";
 import ButtonPrimary from "../../../components/ButtonPrimary";
 import ButtonSecondary from "../../../components/ButtonSecondary";
 import ProductDetailsCard from "../../../components/ProductDetailsCard";
-import * as productService from '../../../services/product-services'
+import * as productService from "../../../services/product-services";
 
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ProductDTO } from "../../../models/product";
 
 
-
 const ProductDetails = () => {
-   const params = useParams(); 
+  const params = useParams();
+
+  const navigate = useNavigate();
 
   const [product, setProduct] = useState<ProductDTO>();
 
-  useEffect(() => {
-    /* Requisição na apí, trazendo detalhes de produtos */
-   productService.findById(Number(params.productId)).then(response =>{
-   setProduct(response.data)
-   })
+ 
 
-  }, [params]);
+  useEffect(() => {
+
+   
+   
+
+    /* Requisição na apí, trazendo detalhes de produtos */
+    productService
+      .findById(Number(params.productId))
+      .then((response) => {
+        setProduct(response.data);
+      })
+      .catch(() => {
+        navigate("/")
+      });
+  }, []);
 
   return (
     <main>
