@@ -1,29 +1,34 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./style.css";
-import * as cartService from '../../../services/cart-service'
-import {OrderDTO, OrderItemDTO } from "../../../models/order";
+import * as cartService from "../../../services/cart-service";
+import { OrderDTO, OrderItemDTO } from "../../../models/order";
 
+const item1: OrderItemDTO = new OrderItemDTO(
+  4,
+  1,
+  "PC Gamer",
+  1200,
+  "https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/4-big.jpg"
+);
 
-const item1 : OrderItemDTO = new OrderItemDTO(
-4,1,"PC Gamer", 1200, 
-"https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/4-big.jpg"
-)
-
-const item2 :OrderItemDTO = new OrderItemDTO(
-  5,2,"Rails for Dummies",100.99, "https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/5-big.jpg"
-)
-
+const item2: OrderItemDTO = new OrderItemDTO(
+  5,
+  2,
+  "Rails for Dummies",
+  100.99,
+  "https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/5-big.jpg"
+);
 
 export default function Cart() {
-  const cart : OrderDTO = new OrderDTO();
+  const [cart, setCart] = useState<OrderDTO>(cartService.getCart()) 
 
+/*   const cart: OrderDTO = new OrderDTO();
   useEffect(() => {
-    cart.items.push(item1);
-    cart.items.push(item2);
-
-   cartService.saveCart(cart)
+    cart.items.push(item1)
+    cart.items.push(item2)
+    cartService.saveCart(cart)
   }, []);
-
+ */
   return (
     <main>
       <section id="cart-container-section" className="dsc-container">
