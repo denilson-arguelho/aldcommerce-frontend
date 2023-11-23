@@ -6,13 +6,15 @@ const HeaderClient = () => {
     <header className="dsc-header-client">
       <nav className="dsc-container">
         <Link to={`/`}>
-        <h1>DSCommerce</h1>
+          <h1>DSCommerce</h1>
         </Link>
         <div className="dsc-navbar-right">
           <div className="dsc-menu-items-container">
-            <div className="dsc-menu-item">
-              <img src={cartIcon} alt="Carrinho de compras" />
-            </div>
+            <Link to={"/cart"}>
+              <div className="dsc-menu-item">
+                <img src={cartIcon} alt="Carrinho de compras" />
+              </div>
+            </Link>
           </div>
           <a href="#">Entrar</a>
         </div>
