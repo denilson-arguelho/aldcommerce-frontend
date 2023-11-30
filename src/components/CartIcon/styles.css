@@ -1,0 +1,14 @@
+.dsc-cart-count{
+    background-color: red;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 10px;
+    position: relative;
+    top: -10px;
+    left: -5px;
+}
